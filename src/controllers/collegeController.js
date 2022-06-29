@@ -28,14 +28,7 @@ let getCollegeDetails = async function(req, res){
     res.send({msg:saveData})
 
 
-    // let interns= await internModel.find({collegeId: saveData[0]._id})
-    // let college= await collegeModel.find()
-    // if(college){
-    //     for(let i=0;i<college.length;i++){
-    //         college.interns= interns
-    //     }
-    // }
-    // res.send({data: college})
+    
 }
 
 module.exports.createCollege = createCollege;
