@@ -1,4 +1,5 @@
 const collegeModel = require("../models/collegeModel")
+const internModel = require("../models/internModel")
 
 let createCollege = async function (req, res) {
     try {
@@ -22,4 +23,20 @@ let createCollege = async function (req, res) {
     }
 }
 
+let getCollegeDetails = async function(req, res){
+    let saveData= await collegeModel.find().populate('Intern')
+    res.send({msg:saveData})
+
+
+    // let interns= await internModel.find({collegeId: saveData[0]._id})
+    // let college= await collegeModel.find()
+    // if(college){
+    //     for(let i=0;i<college.length;i++){
+    //         college.interns= interns
+    //     }
+    // }
+    // res.send({data: college})
+}
+
 module.exports.createCollege = createCollege;
+module.exports.getCollegeDetails=getCollegeDetails
