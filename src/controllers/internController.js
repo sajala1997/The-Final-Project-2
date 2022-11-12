@@ -21,6 +21,7 @@ const bodyValidator = function (data) {
 
 let createIntern = async function (req, res) {
     try {
+        res.setHeader("Access-Control-Allow-Origin", "*")
         let data = req.body
         let collegeName = req.body.collegeName
         if (!bodyValidator(data)) return res.status(400).send({ status: false, msg: "please enter body" })
@@ -39,9 +40,9 @@ let createIntern = async function (req, res) {
             return res.status(400).send({ status: false, message: `name must contain only alphabets` })
         }
 
-        if (!/^\+\d{1,3}-\d{10}$/.test(data.mobile)) {
-            return res.status(400).send({ status: false, message: `Please provide the correct format(+XX-XXXXXXXXXX) for mobile number` })
-        }
+        // if (!/^\+\d{1,3}-\d{10}$/.test(data.mobile)) {
+        //     return res.status(400).send({ status: false, message: `Please provide the correct format(+XX-XXXXXXXXXX) for mobile number` })
+        // }
 
         if (!/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(data.email)) {
             return res.status(400).send({ status: false, message: `Email should be a valid email address` });
